@@ -38,7 +38,7 @@ export class CityCardComponent implements OnChanges {
     });
   }
 
-  private getCityWeather(): void {
+  getCityWeather(): void {
     if (!this.city) return;
 
     this.weatherService.getCityWeather(this.city)
