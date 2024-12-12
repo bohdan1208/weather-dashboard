@@ -1,0 +1,38 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 200px;
+  background-color: white;
+  border-radius: 4px;
+  color: black;
+  position: relative;
+}
+
+.title {
+  font-size: 40px;
+  line-height: 40px;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.temperature {
+  font-size: 30px;
+}
+
+.delete-button {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+}
+
+.menu-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}

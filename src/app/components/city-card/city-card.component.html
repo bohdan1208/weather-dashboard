@@ -1,0 +1,14 @@
+@if(weather()) {
+  <button mat-mini-fab class="delete-button" (click)="removeCity.emit()">
+    <mat-icon>delete</mat-icon>
+  </button>
+  <button mat-mini-fab class="menu-button" (click)="openDialog()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="title">{{weather()?.name}}</span>
+  <span class="temperature">{{weather()?.main?.temp | truncate}}°C</span>
+  <span>(feels like {{weather()?.main?.feels_like | truncate}}°C)</span>
+  <span>Wind: {{weather()?.wind?.speed}}m/s, Clouds: {{weather()?.clouds?.all}}%</span>
+} @else {
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+}

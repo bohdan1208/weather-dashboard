@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>Details about weather</h2>
+
+<mat-dialog-content>
+  <mat-table [dataSource]="dataSource()" class="mat-elevation-z8">
+    <ng-container matColumnDef="data">
+      <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.dt_txt | date: 'short'}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="temperature">
+      <mat-header-cell *matHeaderCellDef>Temperature</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.main.temp | truncate}}°C (feels like {{element.main.feels_like | truncate}}°C )</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="wind">
+      <mat-header-cell *matHeaderCellDef>Wind</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.wind.speed}}m/s</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="clouds">
+      <mat-header-cell *matHeaderCellDef>Clouds</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{element.clouds.all}}%</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
