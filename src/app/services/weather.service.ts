@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { ConfigService } from './config.service';
-import {City} from '../interfaces/weather.interface';
+import {City, CityWeather, CityWeatherDetails} from '../interfaces/weather.interface';
 
 @Injectable({providedIn: 'root'})
 export class WeatherService {
@@ -24,10 +24,10 @@ export class WeatherService {
     );
   }
 
-  getCityWeather({lat, lon}: City): Observable<any> {
+  getCityWeather({lat, lon}: City): Observable<CityWeather> {
     const url = this.configService.getCurrentWeatherUrl(lat, lon);
 
-    return this.http.get<any>(url).pipe(
+    return this.http.get<CityWeather>(url).pipe(
       map((response) => response),
       catchError((error) => {
         console.error('Error fetching weather data:', error);
@@ -36,10 +36,10 @@ export class WeatherService {
     );
   }
 
-  getHourlyForecastWeather({lat, lon}: City): Observable<any> {
+  getHourlyForecastWeather({lat, lon}: City): Observable<CityWeatherDetails> {
     const url = this.configService.getHourlyForecast(lat, lon);
 
-    return this.http.get<any>(url).pipe(
+    return this.http.get<CityWeatherDetails>(url).pipe(
       map((response) => response),
       catchError((error) => {
         console.error('Error fetching weather data:', error);
